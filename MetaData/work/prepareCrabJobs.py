@@ -1,4 +1,5 @@
-mport os
+#!/usr/bin/env python
+import os
 from subprocess import call, Popen, PIPE
 
 # Load command line option utilities
@@ -240,6 +241,9 @@ if options.createCrabConfig:
     print rel
     Popen(['cp', '-p', rel+'/src/flashgg/MicroAOD/data/Fall15_25nsV2_DATA.db', './'])
     Popen(['cp', '-p', rel+'/src/flashgg/MicroAOD/data/Fall15_25nsV2_MC.db', './'])
+    # for the moment just add, then possibly remove the above 2 lines - FIXME
+    Popen(['cp', '-p', rel+'/src/flashgg/MicroAOD/data/Spring16_25nsV3_DATA.db', './'])
+    Popen(['cp', '-p', rel+'/src/flashgg/MicroAOD/data/Spring16_25nsV3_MC.db', './'])
     print ("Storing options into config.json")
     cfg = open("config.json","w+")
     cfg.write( dumpCfg(options) )
@@ -301,7 +305,6 @@ if options.createCrabConfig:
         ###     print "-->", len(jobname), jobname
         ###     raise Exception
         if len(jobname) > 97:
->>>>>>> 4fe64cfa3315102b19f336709d359fd4438086e4
             print "jobname length: %d " % len(jobname)
             jobname = jobname[:97]
         jobname0 = jobname.rstrip("-").rstrip("-v")
@@ -398,4 +401,6 @@ if options.createCrabConfig:
         # close output files
         for outfile in outfiles:
             outfile.close()
+
+
 
